@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+---
+<BaseLayout title="Page Not Found">
+  <section class="section text-center">
+    <div class="container">
+      <p class="eyebrow"><Icon name="star" /> 404</p>
+      <h1>Oops — this page wandered off.</h1>
+      <p class="lead" style="margin-inline:auto;">
+        Even little ones take a wrong turn now and then. Let’s get you back to the good stuff.
+      </p>
+      <div class="cluster cluster--center mt-3">
+        <a href="/" class="btn btn--primary">Back Home <Icon name="arrow" /></a>
+        <a href="/#visit" class="btn btn--ghost">Visit &amp; Enroll</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

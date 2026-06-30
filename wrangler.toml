@@ -1,0 +1,16 @@
+# Cloudflare Worker (static assets) configuration for the Little Blessings Preschool site.
+#
+# Cloudflare's dashboard unifies Pages into the Workers platform, so this static
+# site deploys as a Worker that serves the prebuilt ./dist directory. There is no
+# server-side code — it's a static-assets-only Worker.
+#
+# Deploy from the CLI with:   npm run deploy   (runs: astro build && wrangler deploy)
+# Or connect this repo in the dashboard: Workers & Pages -> Create -> Import a
+# repository -> pick this repo. Cloudflare detects Astro; build = `npm run build`.
+name = "little-blessings-preschool"
+compatibility_date = "2024-12-01"
+
+[assets]
+directory = "./dist"
+# Serve our generated 404.html for unknown paths.
+not_found_handling = "404-page"

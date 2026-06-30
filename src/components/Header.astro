@@ -1,0 +1,181 @@
+---
+import { site, nav } from '../data/site';
+import Icon from './Icon.astro';
+---
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a href="#top" class="brand" aria-label={`${site.name} home`}>
+      <span class="brand-mark" aria-hidden="true"><Icon name="cross" /></span>
+      <span class="brand-text">
+        <strong>Little Blessings</strong>
+        <em>Preschool · Madison, MN</em>
+      </span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      {nav.map((item) => (
+        <a href={item.href} class="nav-link">{item.label}</a>
+      ))}
+    </nav>
+
+    <a href={site.phoneHref} class="nav-phone">
+      <Icon name="phone" /> {site.phone}
+    </a>
+    <a href="#visit" class="btn btn--primary nav-cta">Enroll Now</a>
+
+    <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav">
+      <span class="sr-only">Toggle menu</span>
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </div>
+
+  <div class="nav-mobile" id="mobile-nav" data-mobile-nav hidden>
+    {nav.map((item) => (
+      <a href={item.href} class="nav-link" data-nav-close>{item.label}</a>
+    ))}
+    <a href={site.phoneHref} class="nav-link" data-nav-close>Call {site.phone}</a>
+    <a href="#visit" class="btn btn--primary nav-mobile-cta" data-nav-close>Enroll Now</a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251, 247, 238, 0.85);
+    backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line);
+    transition: box-shadow 0.3s var(--ease);
+  }
+  .site-header[data-scrolled] { box-shadow: var(--shadow-sm); }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    height: 76px;
+  }
+  .brand { display: flex; align-items: center; gap: 0.7rem; color: var(--green-900); }
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: linear-gradient(150deg, var(--green-500), var(--green-700));
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(79, 138, 106, 0.32);
+  }
+  .brand-mark :global(svg) { width: 24px; height: 24px; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.05; font-family: var(--font-display); }
+  .brand-text strong { font-size: 1.28rem; font-weight: 700; color: var(--green-900); white-space: nowrap; }
+  .brand-text em {
+    font-style: normal;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-600);
+  }
+
+  .nav-desktop { display: flex; align-items: center; gap: 0.1rem; margin-left: auto; }
+  .nav-link {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    padding: 0.5rem 0.8rem;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .nav-link:hover { color: var(--green-700); background: var(--sage-100); }
+
+  .nav-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--green-700);
+    padding: 0.5rem 0.5rem;
+    white-space: nowrap;
+  }
+  .nav-phone :global(svg) { width: 17px; height: 17px; }
+  .nav-cta { padding: 0.6rem 1.35rem; font-size: 0.98rem; }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 46px; height: 46px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fff;
+    cursor: pointer;
+  }
+  .nav-toggle .bar {
+    width: 20px; height: 2px;
+    background: var(--green-800);
+    margin-inline: auto;
+    transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+  }
+  .nav-toggle[aria-expanded='true'] .bar:nth-child(2) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle[aria-expanded='true'] .bar:nth-child(3) { opacity: 0; }
+  .nav-toggle[aria-expanded='true'] .bar:nth-child(4) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile {
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 1rem 1.5rem 1.75rem;
+    border-top: 1px solid var(--line);
+    background: var(--cream);
+  }
+  .nav-mobile .nav-link { font-size: 1.08rem; padding: 0.7rem 0.6rem; }
+  .nav-mobile-cta { margin-top: 0.75rem; justify-content: center; }
+
+  @media (max-width: 1000px) {
+    .nav-desktop,
+    .nav-phone,
+    .nav-cta { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-mobile[data-open] { display: flex; }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('[data-header]');
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const menu = document.querySelector('[data-mobile-nav]');
+
+  const closeMenu = () => {
+    toggle?.setAttribute('aria-expanded', 'false');
+    menu?.removeAttribute('data-open');
+    menu?.setAttribute('hidden', '');
+  };
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    if (open) {
+      closeMenu();
+    } else {
+      toggle.setAttribute('aria-expanded', 'true');
+      menu?.setAttribute('data-open', '');
+      menu?.removeAttribute('hidden');
+    }
+  });
+
+  document.querySelectorAll('[data-nav-close]').forEach((el) =>
+    el.addEventListener('click', closeMenu)
+  );
+
+  const onScroll = () => {
+    if (window.scrollY > 8) header?.setAttribute('data-scrolled', '');
+    else header?.removeAttribute('data-scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

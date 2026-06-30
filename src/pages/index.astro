@@ -1,0 +1,465 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { site, programs, reasons, day, steps, stats } from '../data/site';
+const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+---
+<BaseLayout>
+  <!-- Hero ------------------------------------------------------------ -->
+  <section class="hero">
+    <div class="hero-blob hero-blob--a" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob--b" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="pill"><Icon name="sun" /> Now enrolling · 2026–2027</span>
+        <h1>Where little ones grow in <span class="ink-gold">faith</span>, friendship &amp; <span class="ink-green">wonder</span>.</h1>
+        <p class="lead">
+          Little Blessings is a warm, Christ-centered preschool in Madison, Minnesota,
+          where children ages 2–5 are loved by name, learn through play, and take their
+          first joyful steps toward kindergarten.
+        </p>
+        <div class="cluster mt-3">
+          <a href="#visit" class="btn btn--primary">Schedule a Visit <Icon name="arrow" /></a>
+          <a href={site.phoneHref} class="btn btn--ghost"><Icon name="phone" /> {site.phone}</a>
+        </div>
+        <p class="hero-trust">
+          <Icon name="heart" class="ic-gold" /> A ministry of {site.ministryOf} · Children of all faiths &amp; backgrounds welcome
+        </p>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="scene">
+          <span class="scene-sun"><Icon name="sun" /></span>
+          <div class="scene-hill scene-hill--back"></div>
+          <div class="scene-hill scene-hill--front"></div>
+          <span class="float float--abc">ABC</span>
+          <span class="float float--123">123</span>
+          <span class="float float--heart"><Icon name="heart" /></span>
+          <span class="float float--star"><Icon name="star" /></span>
+          <span class="float float--cross"><Icon name="cross" /></span>
+        </div>
+      </div>
+    </div>
+    <div class="wave wave--cream" aria-hidden="true">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,30 C960,60 1200,90 1440,40 L1440,80 L0,80 Z"/></svg>
+    </div>
+  </section>
+
+  <!-- Stat strip ------------------------------------------------------ -->
+  <section class="section--tight stat-strip">
+    <div class="container stat-row">
+      {stats.map((s) => (
+        <div class="stat">
+          <span class="stat-value">{s.value}</span>
+          <span class="stat-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Welcome --------------------------------------------------------- -->
+  <section class="section" id="welcome">
+    <div class="container welcome-grid">
+      <div class="welcome-aside">
+        <span class="eyebrow"><Icon name="church" /> Welcome, families</span>
+        <h2>A gentle place to begin.</h2>
+        <blockquote class="verse">
+          {site.verse.text}
+          <cite>— {site.verse.ref}</cite>
+        </blockquote>
+      </div>
+      <div class="welcome-body">
+        <p class="lead">
+          At Little Blessings, every child is a treasured gift. Our mission is to provide a
+          safe, healthy, and creative environment — with a Christian focus — where your child
+          can play, make friends their own age, and discover the joy of learning.
+        </p>
+        <p>
+          In our small classrooms, teachers know each child by name and meet them right where
+          they are. Days are filled with stories and songs, art and outdoor play, prayer and
+          plenty of laughter — building the curiosity, kindness, and confidence that carry
+          children well beyond their preschool years.
+        </p>
+        <p>
+          We warmly welcome children of every faith and background. Come see why Madison
+          families have trusted us with their little ones for years.
+        </p>
+        <a href="#programs" class="btn btn--ghost mt-1">See Our Programs <Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -------------------------------------------------------- -->
+  <section class="section section--alt" id="programs">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow"><Icon name="star" /> For every age &amp; stage</span>
+        <h2>Programs that grow with your child.</h2>
+        <p class="lead" style="margin-inline:auto;">
+          From first steps away from home to getting ready for kindergarten — there’s a
+          loving place here for your little blessing.
+        </p>
+      </div>
+
+      <div class="program-list">
+        {programs.map((p) => (
+          <article class="program">
+            <div class="program-visual">
+              <span class="program-icon"><Icon name={p.icon} /></span>
+              <span class="program-age">{p.ages}</span>
+              {p.featured && <span class="pill program-pill">Most loved</span>}
+            </div>
+            <div class="program-content">
+              <p class="program-label">{p.label}</p>
+              <h3>{p.name}</h3>
+              <p>{p.summary}</p>
+              <ul class="checklist">
+                {p.highlights.map((h) => (
+                  <li><Icon name="check" /> {h}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- A day at Little Blessings --------------------------------------- -->
+  <section class="section" id="day">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow"><Icon name="sun" /> A day with us</span>
+        <h2>Joyful from hello to goodbye.</h2>
+        <p class="lead">Predictable, gentle rhythms help little ones feel safe — and free to explore.</p>
+      </div>
+      <ol class="timeline">
+        {day.map((d) => (
+          <li class="tl-item">
+            <span class="tl-icon"><Icon name={d.icon} /></span>
+            <div class="tl-body">
+              <span class="tl-time">{d.time}</span>
+              <h3>{d.title}</h3>
+              <p>{d.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Why families choose us ------------------------------------------ -->
+  <section class="section section--cream" id="why">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <span class="eyebrow"><Icon name="heart" /> Why families choose us</span>
+        <h2>More than a preschool — a family.</h2>
+      </div>
+      <div class="reasons">
+        {reasons.map((r) => (
+          <div class="reason">
+            <span class="reason-icon"><Icon name={r.icon} /></span>
+            <div>
+              <h3>{r.title}</h3>
+              <p>{r.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Faith band ------------------------------------------------------ -->
+  <section class="section section--green faith">
+    <div class="container faith-inner">
+      <span class="faith-mark"><Icon name="cross" /></span>
+      <blockquote>
+        “Train up a child in the way he should go; even when he is old he will not depart from it.”
+      </blockquote>
+      <cite>— Proverbs 22:6</cite>
+      <p class="lead" style="margin-inline:auto;">
+        Faith isn’t a single lesson on our calendar — it’s the love, patience, and grace woven
+        through every part of our day.
+      </p>
+    </div>
+  </section>
+
+  <!-- Visit / Enroll -------------------------------------------------- -->
+  <section class="section" id="visit">
+    <div class="container visit-grid">
+      <div class="visit-info">
+        <span class="eyebrow"><Icon name="pin" /> Visit &amp; enroll</span>
+        <h2>We’d love to meet you.</h2>
+        <p class="lead">
+          The best way to know if Little Blessings is right for your family is to come see us.
+          Enrolling is simple — here’s how to begin.
+        </p>
+
+        <ol class="steps">
+          {steps.map((s) => (
+            <li class="step">
+              <span class="step-n">{s.n}</span>
+              <div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <div class="contact-box">
+          <a href={site.phoneHref} class="contact-row">
+            <span class="contact-ic"><Icon name="phone" /></span>
+            <span><strong>Call us</strong><br />{site.phone}</span>
+          </a>
+          <a href={site.social.facebook} class="contact-row" target="_blank" rel="noopener">
+            <span class="contact-ic"><Icon name="facebook" /></span>
+            <span><strong>Message us</strong><br />on Facebook</span>
+          </a>
+          <div class="contact-row">
+            <span class="contact-ic"><Icon name="pin" /></span>
+            <span><strong>{site.address.name}</strong><br />{site.address.street}, {site.address.city}, {site.address.state} {site.address.zip}</span>
+          </div>
+        </div>
+
+        <div class="cluster mt-3">
+          <a href={site.phoneHref} class="btn btn--primary"><Icon name="phone" /> Call to Enroll</a>
+          <a href={site.social.facebook} class="btn btn--ghost" target="_blank" rel="noopener"><Icon name="facebook" /> Find Us on Facebook</a>
+        </div>
+      </div>
+
+      <div class="visit-map">
+        <iframe
+          title={`Map to ${site.name}`}
+          src={mapSrc}
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+        <div class="hours-panel">
+          <h3><Icon name="clock" class="ic-gold" /> Class times</h3>
+          <ul>
+            {site.hours.map((h) => (
+              <li><span>{h.day}</span><span>{h.time}</span></li>
+            ))}
+          </ul>
+          <p class="hours-note">{site.license} · Times vary by program — call to confirm openings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ---- Hero ---- */
+  .hero { position: relative; overflow: hidden; padding-block: clamp(2.5rem, 6vw, 5rem) clamp(5rem, 9vw, 8rem); }
+  .hero-blob { position: absolute; border-radius: 50%; filter: blur(8px); z-index: 0; }
+  .hero-blob--a { width: 46vw; max-width: 560px; aspect-ratio: 1; top: -16%; right: -8%;
+    background: radial-gradient(circle, rgba(247, 201, 95, 0.4), transparent 65%); }
+  .hero-blob--b { width: 40vw; max-width: 480px; aspect-ratio: 1; bottom: -20%; left: -12%;
+    background: radial-gradient(circle, rgba(95, 160, 124, 0.28), transparent 65%); }
+  .hero-inner {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center;
+  }
+  .ink-gold { color: var(--gold-600); }
+  .ink-green { color: var(--green-600); }
+  .hero-copy h1 { margin-top: 1rem; }
+  .hero-trust {
+    display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    margin-top: 2rem; color: var(--muted); font-size: 0.95rem; font-weight: 600;
+  }
+  .hero-trust :global(svg) { width: 18px; height: 18px; }
+
+  /* Hero illustrated scene (no photos required) */
+  .hero-art { position: relative; min-height: 360px; }
+  .scene {
+    position: relative; height: 100%; min-height: 380px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, #eaf5fb 0%, #f3f9ef 55%, var(--sage-100) 100%);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  .scene-sun {
+    position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
+    width: 78px; height: 78px; display: grid; place-items: center;
+    color: var(--gold-500);
+  }
+  .scene-sun :global(svg) { width: 78px; height: 78px; stroke-width: 1.4; }
+  .scene-hill { position: absolute; left: -10%; right: -10%; border-radius: 50% 50% 0 0; }
+  .scene-hill--back { bottom: -38%; height: 70%; background: var(--green-500); opacity: 0.55; }
+  .scene-hill--front { bottom: -46%; height: 64%; background: var(--green-600); }
+  .float {
+    position: absolute; display: grid; place-items: center;
+    background: #fff; border-radius: 16px; box-shadow: var(--shadow-md);
+    font-family: var(--font-display); font-weight: 700; color: var(--green-700);
+    padding: 0.5rem 0.85rem;
+  }
+  .float :global(svg) { width: 24px; height: 24px; }
+  .float--abc { top: 22%; left: 8%; color: var(--coral); transform: rotate(-8deg); }
+  .float--123 { top: 16%; right: 10%; color: var(--sky); transform: rotate(7deg); }
+  .float--heart { bottom: 30%; left: 6%; color: var(--coral); padding: 0.55rem; }
+  .float--star { bottom: 16%; right: 9%; color: var(--gold-500); padding: 0.55rem; }
+  .float--cross { top: 48%; right: 4%; color: var(--green-600); padding: 0.55rem; }
+
+  /* Wave divider */
+  .wave { position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0; z-index: 1; }
+  .wave svg { width: 100%; height: 60px; display: block; }
+  .wave--cream svg path { fill: var(--cream); }
+
+  /* ---- Stats ---- */
+  .stat-strip { border-bottom: 1px solid var(--line); }
+  .stat-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; text-align: center;
+  }
+  .stat { padding: 0.5rem; }
+  .stat-value {
+    display: block; font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem); color: var(--green-600); line-height: 1.1;
+  }
+  .stat-label { color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+
+  /* ---- Welcome ---- */
+  .welcome-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; align-items: start; }
+  .verse {
+    margin: 1.5rem 0 0; padding: 1.4rem 1.6rem;
+    background: var(--sage-50); border-left: 5px solid var(--green-500);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-family: var(--font-display); font-weight: 600; font-size: 1.18rem;
+    color: var(--green-800); line-height: 1.5;
+  }
+  .verse cite { display: block; margin-top: 0.6rem; font-style: normal; font-size: 0.95rem; color: var(--green-600); }
+
+  /* ---- Programs ---- */
+  .program-list { display: grid; gap: 1.5rem; }
+  .program {
+    display: grid; grid-template-columns: 280px 1fr; gap: 2rem; align-items: center;
+    background: var(--white); border-radius: var(--radius-lg);
+    padding: 2rem; box-shadow: var(--shadow-sm);
+  }
+  .program:nth-child(even) { direction: rtl; }
+  .program:nth-child(even) > * { direction: ltr; }
+  .program-visual {
+    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 0.8rem; padding: 2.2rem 1.5rem; border-radius: var(--radius);
+    background: linear-gradient(160deg, var(--sage-100), var(--sky-100));
+    text-align: center; min-height: 200px;
+  }
+  .program:nth-child(2) .program-visual { background: linear-gradient(160deg, var(--gold-100), var(--sage-100)); }
+  .program:nth-child(3) .program-visual { background: linear-gradient(160deg, var(--coral-100), var(--sage-100)); }
+  .program-icon {
+    width: 84px; height: 84px; display: grid; place-items: center;
+    background: #fff; border-radius: 24px; color: var(--green-600); box-shadow: var(--shadow-sm);
+  }
+  .program-icon :global(svg) { width: 42px; height: 42px; }
+  .program-age { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: var(--green-800); }
+  .program-pill { position: absolute; top: 0.9rem; right: 0.9rem; }
+  .program-label {
+    font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; font-size: 0.82rem; color: var(--green-600); margin: 0 0 0.2rem;
+  }
+  .program-content h3 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); margin-bottom: 0.5rem; }
+  .program-content > p { color: var(--text-soft); }
+  .checklist { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
+  .checklist li { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--green-800); font-size: 0.96rem; }
+  .checklist :global(svg) { width: 18px; height: 18px; color: var(--green-500); flex: none; }
+
+  /* ---- Timeline ---- */
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 0.4rem; }
+  .timeline::before { content: ''; position: absolute; left: 27px; top: 12px; bottom: 12px; width: 3px; background: var(--sage-200); border-radius: 3px; }
+  .tl-item { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 1.2rem; align-items: start; padding: 0.7rem 0; }
+  .tl-icon {
+    position: relative; z-index: 1; width: 56px; height: 56px; display: grid; place-items: center;
+    background: #fff; border: 3px solid var(--sage-200); border-radius: 50%; color: var(--green-600);
+  }
+  .tl-icon :global(svg) { width: 26px; height: 26px; }
+  .tl-time {
+    display: inline-block; font-family: var(--font-display); font-weight: 600;
+    font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-600);
+  }
+  .tl-body h3 { margin: 0.15rem 0 0.25rem; }
+  .tl-body p { margin: 0; color: var(--text-soft); }
+
+  /* ---- Reasons (feature list, no cards) ---- */
+  .reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; }
+  .reason { display: flex; gap: 1rem; align-items: flex-start; }
+  .reason-icon {
+    flex: none; width: 56px; height: 56px; display: grid; place-items: center;
+    border-radius: 18px; background: var(--sage-100); color: var(--green-600);
+  }
+  .reason-icon :global(svg) { width: 28px; height: 28px; }
+  .reason h3 { font-size: 1.22rem; margin-bottom: 0.3rem; }
+  .reason p { margin: 0; color: var(--text-soft); font-size: 0.98rem; }
+
+  /* ---- Faith band ---- */
+  .faith-inner { max-width: 800px; margin-inline: auto; text-align: center; }
+  .faith-mark {
+    width: 64px; height: 64px; margin: 0 auto 1.2rem; display: grid; place-items: center;
+    border-radius: 20px; background: rgba(255, 255, 255, 0.14); color: #fff;
+  }
+  .faith-mark :global(svg) { width: 34px; height: 34px; }
+  .faith blockquote {
+    font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3.4vw, 2.2rem);
+    line-height: 1.35; color: #fff; margin: 0 0 0.8rem;
+  }
+  .faith cite { display: block; font-style: normal; font-weight: 600; color: var(--gold-400); margin-bottom: 1.4rem; }
+
+  /* ---- Visit / Enroll ---- */
+  .visit-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3rem; align-items: start; }
+  .steps { list-style: none; margin: 1.75rem 0; padding: 0; display: grid; gap: 1.2rem; }
+  .step { display: grid; grid-template-columns: 48px 1fr; gap: 1rem; align-items: start; }
+  .step-n {
+    width: 48px; height: 48px; display: grid; place-items: center;
+    border-radius: 50%; background: var(--green-600); color: #fff;
+    font-family: var(--font-display); font-weight: 700; font-size: 1.25rem;
+  }
+  .step h3 { margin: 0.1rem 0 0.2rem; font-size: 1.2rem; }
+  .step p { margin: 0; color: var(--text-soft); font-size: 0.98rem; }
+
+  .contact-box {
+    display: grid; gap: 0.25rem; margin-top: 2rem; padding: 1rem 1.25rem;
+    background: var(--sage-50); border-radius: var(--radius);
+  }
+  .contact-row { display: flex; align-items: center; gap: 0.9rem; padding: 0.7rem 0.25rem; color: var(--ink); }
+  .contact-row + .contact-row { border-top: 1px solid var(--line); }
+  a.contact-row:hover { color: var(--green-700); }
+  .contact-ic {
+    flex: none; width: 44px; height: 44px; display: grid; place-items: center;
+    border-radius: 14px; background: #fff; color: var(--green-600); box-shadow: var(--shadow-sm);
+  }
+  .contact-ic :global(svg) { width: 22px; height: 22px; }
+  .contact-row span strong { font-family: var(--font-display); }
+
+  .visit-map { position: sticky; top: 96px; display: grid; gap: 1.25rem; }
+  .visit-map iframe {
+    width: 100%; height: 300px; border: 0; border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md); filter: saturate(1.05);
+  }
+  .hours-panel { background: var(--white); border-radius: var(--radius); padding: 1.5rem 1.6rem; box-shadow: var(--shadow-sm); }
+  .hours-panel h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem; margin-bottom: 0.9rem; }
+  .hours-panel h3 :global(svg) { width: 22px; height: 22px; }
+  .hours-panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+  .hours-panel li { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.95rem; }
+  .hours-panel li span:first-child { font-weight: 700; color: var(--green-800); }
+  .hours-panel li span:last-child { color: var(--text-soft); text-align: right; }
+  .hours-note { margin: 1rem 0 0; font-size: 0.85rem; color: var(--muted); }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-art { order: -1; min-height: 300px; }
+    .welcome-grid,
+    .visit-grid { grid-template-columns: 1fr; }
+    .reasons { grid-template-columns: repeat(2, 1fr); }
+    .visit-map { position: static; }
+  }
+  @media (max-width: 760px) {
+    .program { grid-template-columns: 1fr; gap: 1.5rem; text-align: left; }
+    .program:nth-child(even) { direction: ltr; }
+  }
+  @media (max-width: 620px) {
+    .stat-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+    .reasons { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,22 @@
+{
+  "name": "little-blessings-preschool",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Landing site for Little Blessings Preschool — Madison, MN. Built with Astro, deployed to Cloudflare.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "deploy": "astro build && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.2.1",
+    "astro": "^4.16.18"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}

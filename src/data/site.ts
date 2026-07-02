@@ -39,7 +39,7 @@ export const site = {
   // Class days/times — placeholder pattern for a part-day church Pre-K.
   // Confirm the real schedule with the director before launch.
   hours: [
-    { day: 'Pre-K (ages 4–5)', time: 'Monday to Thursday · 9:00 AM to 12:00 PM' },
+    { day: 'Pre-K (ages 4–5)', time: 'Monday to Thursday · 8:00 AM to 3:00 PM' },
     { day: 'Office', time: 'Weekdays · 9:00 AM to 3:00 PM' },
   ],
 };

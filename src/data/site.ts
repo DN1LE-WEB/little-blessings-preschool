@@ -11,10 +11,11 @@
 export const site = {
   name: 'Little Blessings Preschool',
   shortName: 'Little Blessings',
-  tagline: 'A Christ-centered preschool in Madison, Minnesota',
+  tagline: 'A Christ-centered Pre-K in Madison, Minnesota',
   ministryOf: 'Faith Lutheran Church',
   description:
-    'Little Blessings Preschool is a warm, Christ-centered preschool in Madison, MN, where children ages 2–5 grow in faith, friendship, and a love of learning. A ministry of Faith Lutheran Church — now enrolling.',
+    'Little Blessings is a Christ-centered Pre-K in Madison, MN, for children ages 4 to 5. We keep just 10 spots, so every child is known and loved. A ministry of Faith Lutheran Church, now enrolling.',
+  spots: 10,
   verse: {
     text: '“Let the little children come to me, and do not hinder them, for the kingdom of God belongs to such as these.”',
     ref: 'Mark 10:14',
@@ -35,55 +36,20 @@ export const site = {
     facebook: 'https://www.facebook.com/FaithLBP/',
     church: 'https://www.faithlutheranmadison.org/',
   },
-  // Class days/times — placeholder pattern typical of part-day church preschools.
+  // Class days/times — placeholder pattern for a part-day church Pre-K.
   // Confirm the real schedule with the director before launch.
   hours: [
-    { day: 'Toddler class', time: 'Tuesday & Thursday · 9:00 – 11:30 AM' },
-    { day: 'Preschool (3–4)', time: 'Mon / Wed / Fri · 9:00 – 11:30 AM' },
-    { day: 'Pre-K (4–5)', time: 'Monday – Thursday · 9:00 AM – 12:00 PM' },
-    { day: 'Office', time: 'Weekdays · 9:00 AM – 3:00 PM' },
+    { day: 'Pre-K (ages 4–5)', time: 'Monday to Thursday · 9:00 AM to 12:00 PM' },
+    { day: 'Office', time: 'Weekdays · 9:00 AM to 3:00 PM' },
   ],
 };
 
 // In-page anchor navigation — this is a single-page landing site.
 export const nav = [
   { label: 'Welcome', href: '#welcome' },
-  { label: 'Programs', href: '#programs' },
   { label: 'Our Day', href: '#day' },
   { label: 'Why Us', href: '#why' },
   { label: 'Visit', href: '#visit' },
-];
-
-// Age-based programs. Faith-themed names are suggestions — confirm with the church.
-export const programs = [
-  {
-    name: 'Little Lambs',
-    label: 'Toddlers',
-    ages: 'Ages 2 – 3',
-    icon: 'leaf',
-    summary:
-      'A gentle first step away from home. Through play, songs, and simple Bible stories, our youngest friends build confidence, language, and their very first friendships.',
-    highlights: ['Play-based discovery', 'Potty-training friendly', 'Lots of cuddles & care'],
-  },
-  {
-    name: 'Sonshine Preschool',
-    label: 'Preschool',
-    ages: 'Ages 3 – 4',
-    icon: 'sun',
-    summary:
-      'Curiosity blooms here. Children explore letters, numbers, colors, and creativity while learning to share, take turns, and care for one another as God’s children.',
-    highlights: ['Early literacy & numbers', 'Art, music & movement', 'Social-emotional growth'],
-    featured: true,
-  },
-  {
-    name: 'Pre-K Pathways',
-    label: 'Kindergarten Prep',
-    ages: 'Ages 4 – 5',
-    icon: 'book',
-    summary:
-      'Getting ready to shine in kindergarten. We strengthen letters, sounds, counting, and listening skills so your child walks into their next year prepared and excited.',
-    highlights: ['Kindergarten readiness', 'Name writing & phonics', 'Confidence & independence'],
-  },
 ];
 
 // Reasons families choose Little Blessings (rendered as a flowing feature list).
@@ -91,32 +57,32 @@ export const reasons = [
   {
     icon: 'cross',
     title: 'Christ-Centered Every Day',
-    text: 'Faith isn’t a single lesson — it’s woven through our songs, prayers, and the gentle, loving way we treat one another.',
+    text: 'Faith isn’t just one lesson. It’s in our songs, our prayers, and the kind way we treat each other.',
   },
   {
     icon: 'heart',
-    title: 'Small, Nurturing Classes',
-    text: 'With low child-to-teacher ratios, every child is truly known, encouraged, and cared for by name.',
+    title: 'Just 10 Spots',
+    text: 'With only 10 children in the class, every child is known by name and gets real attention.',
   },
   {
     icon: 'blocks',
     title: 'Learning Through Play',
-    text: 'Hands-on centers, stories, art, and music turn everyday play into joyful, lasting learning.',
+    text: 'Hands-on centers, stories, art, and music turn play into real learning.',
   },
   {
     icon: 'star',
     title: 'Kindergarten Ready',
-    text: 'A gentle, age-appropriate foundation in letters, numbers, and social skills sets children up to thrive.',
+    text: 'We build the letters, numbers, and social skills your child needs to thrive in kindergarten.',
   },
   {
     icon: 'users',
     title: 'All Families Welcome',
-    text: 'Children of every faith and background are warmly welcomed into our preschool family.',
+    text: 'Children of every faith and background are welcome here.',
   },
   {
     icon: 'church',
     title: 'Rooted in Community',
-    text: 'As a ministry of Faith Lutheran Church, we’ve cared for Madison’s children and families for years.',
+    text: 'As a ministry of Faith Lutheran Church, we’ve cared for Madison’s families for years.',
   },
 ];
 
@@ -136,12 +102,12 @@ export const steps = [
   { n: '1', title: 'Reach Out', text: 'Call the church office or send us a message on Facebook to say hello and ask any questions.' },
   { n: '2', title: 'Come Visit', text: 'Schedule a tour to meet our teachers, see the classroom, and feel the warmth for yourself.' },
   { n: '3', title: 'Enroll', text: 'Complete a simple registration form to reserve your child’s spot for the school year.' },
-  { n: '4', title: 'First Day', text: 'Bring your little blessing for a joyful start — we can’t wait to welcome them!' },
+  { n: '4', title: 'First Day', text: 'Bring your little blessing for a joyful start. We can’t wait to welcome them!' },
 ];
 
 export const stats = [
-  { value: '2–5', label: 'Ages we lovingly serve' },
+  { value: '10', label: 'Pre-K spots this year' },
   { value: 'Christ', label: 'At the center of all we do' },
-  { value: 'Small', label: 'Classes, big-time attention' },
+  { value: '4–5', label: 'The ages we serve' },
   { value: 'Now', label: 'Enrolling for the new year' },
 ];

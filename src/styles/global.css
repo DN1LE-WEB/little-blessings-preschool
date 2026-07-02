@@ -1,60 +1,75 @@
 /* ==========================================================================
    Little Blessings Preschool — Design System
-   Warm, gentle, faith-centered. Sage green + sunny gold on soft cream.
+   Bright & joyful. Sky blue + sunny gold + soft coral + leafy green on
+   bright cream. Real photography does the heavy lifting — no icon/card clutter.
    ========================================================================== */
 
 :root {
-  /* Greens — calm, natural, growing */
-  --green-900: #2f5544;
-  --green-800: #356152;
-  --green-700: #3f7a5e;
-  --green-600: #4f8a6a;
-  --green-500: #5fa07c;
-  --sage-200: #cfe3d6;
-  --sage-100: #e3f0e7;
-  --sage-50: #eef7f0;
+  /* Leafy green — growing, alive */
+  --green-900: #244c39;
+  --green-800: #2e5d44;
+  --green-700: #3c7a57;
+  --green-600: #4d9268;
+  --green-500: #5a9e6f;
+  --green-100: #e2f2e8;
+  --green-50: #eef8f1;
+
+  /* Sky blue — open, calm, the lead accent */
+  --sky-700: #2c7aab;
+  --sky-600: #3d93c8;
+  --sky-500: #5aa9d6;
+  --sky-200: #b9def0;
+  --sky-100: #e0f1f9;
 
   /* Sunny gold — joy & warmth */
-  --gold-600: #e0a52e;
-  --gold-500: #f4b942;
-  --gold-400: #f7c95f;
-  --gold-100: #fcefd0;
+  --gold-600: #e0a02a;
+  --gold-500: #f6b73c;
+  --gold-400: #f9c860;
+  --gold-100: #fdeecb;
 
-  /* Friendly secondary accents */
-  --sky: #7cb8d4;
-  --sky-100: #e2f0f6;
-  --coral: #ef8d7a;
-  --coral-100: #fce4df;
+  /* Soft coral — playful pop */
+  --coral-600: #e3705c;
+  --coral-500: #ef8d7a;
+  --coral-400: #f4a695;
+  --coral-100: #fce3dd;
 
   /* Neutrals — warm, paper-soft */
-  --ink: #38332c;
-  --ink-soft: #5d564c;
-  --muted: #8a8175;
-  --line: #ece4d6;
+  --ink: #2f3a3d;
+  --ink-soft: #55615f;
+  --muted: #8a938f;
+  --line: #ece6da;
   --white: #ffffff;
-  --cream: #fbf7ee;
-  --cream-deep: #f5eddd;
+  --cream: #fdfaf3;
+  --cream-deep: #f7efe0;
+
+  /* legacy aliases (kept so older selectors still resolve) */
+  --sage-200: var(--green-100);
+  --sage-100: var(--green-50);
+  --sage-50: var(--green-50);
+  --sky: var(--sky-500);
+  --coral: var(--coral-500);
 
   /* Semantic */
   --bg: var(--cream);
-  --bg-alt: var(--sage-50);
+  --bg-alt: var(--cream-deep);
   --text: var(--ink);
   --text-soft: var(--ink-soft);
   --primary: var(--green-600);
   --primary-dark: var(--green-800);
   --accent: var(--gold-500);
+  --heading: #283b34;
 
   /* Type */
-  --font-display: 'Baloo 2', 'Quicksand', 'Trebuchet MS', sans-serif;
-  --font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Quicksand', 'Trebuchet MS', sans-serif;
+  --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* Layout */
-  --container: 1160px;
+  --container: 1180px;
   --radius: 18px;
-  --radius-lg: 32px;
-  --shadow-sm: 0 3px 14px rgba(47, 85, 68, 0.07);
-  --shadow-md: 0 16px 40px rgba(47, 85, 68, 0.12);
-  --shadow-lg: 0 30px 70px rgba(47, 85, 68, 0.16);
+  --radius-lg: 30px;
+  --shadow-sm: 0 3px 14px rgba(40, 70, 90, 0.08);
+  --shadow-md: 0 16px 40px rgba(40, 70, 90, 0.12);
+  --shadow-lg: 0 30px 70px rgba(40, 70, 90, 0.16);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -75,7 +90,7 @@ body {
   background: var(--bg);
   line-height: 1.7;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -92,13 +107,13 @@ a:hover { color: var(--green-600); }
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.12;
-  color: var(--green-900);
+  line-height: 1.1;
+  color: var(--heading);
   margin: 0 0 0.5em;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(2.5rem, 5.6vw, 4.1rem); }
+h1 { font-size: clamp(2.6rem, 5.8vw, 4.3rem); }
 h2 { font-size: clamp(1.9rem, 3.8vw, 2.8rem); }
 h3 { font-size: clamp(1.25rem, 2.2vw, 1.55rem); }
 
@@ -137,6 +152,10 @@ p { margin: 0 0 1.1em; }
   margin-bottom: 0.8rem;
 }
 .section--green .eyebrow { color: var(--gold-400); }
+.eyebrow--sky { color: var(--sky-700); }
+.eyebrow--gold { color: var(--gold-600); }
+.eyebrow--coral { color: var(--coral-600); }
+.eyebrow--green { color: var(--green-700); }
 
 .lead {
   font-size: 1.16rem;

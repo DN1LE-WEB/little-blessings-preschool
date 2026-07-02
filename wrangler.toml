@@ -10,6 +10,12 @@
 name = "little-blessings-preschool"
 compatibility_date = "2024-12-01"
 
+# Custom domain. madmedia.social must be a zone in this Cloudflare account;
+# Wrangler then auto-creates the DNS record + SSL cert for this subdomain.
+routes = [
+  { pattern = "lbps.madmedia.social", custom_domain = true }
+]
+
 [assets]
 directory = "./dist"
 # Serve our generated 404.html for unknown paths.

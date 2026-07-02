@@ -1,144 +1,145 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
-import { site, programs, reasons, day, steps, stats } from '../data/site';
+import { site, reasons, day, steps } from '../data/site';
+
+import firstDay from '../assets/photos/first-day-group.jpg';
+import singing from '../assets/photos/singing-sanctuary.jpg';
+import teacher from '../assets/photos/teacher-activity.jpg';
+import readingNook from '../assets/photos/reading-nook.jpg';
+import listening from '../assets/photos/listening-center.jpg';
+import lightTable from '../assets/photos/light-table.jpg';
+import writingDesk from '../assets/photos/writing-desk.jpg';
+import beanbag from '../assets/photos/beanbag-corner.jpg';
+import ourBlessings from '../assets/photos/our-little-blessings.jpg';
+
 const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+
+const peek = [
+  { img: readingNook, caption: 'Our cozy reading nook' },
+  { img: lightTable, caption: 'Light-table discovery' },
+  { img: teacher, caption: 'Hands-on science with Miss Teacher' },
+  { img: listening, caption: 'The listening center' },
+  { img: beanbag, caption: 'A comfy corner to land' },
+  { img: writingDesk, caption: 'Little writing desks' },
+];
 ---
 <BaseLayout>
   <!-- Hero ------------------------------------------------------------ -->
   <section class="hero">
-    <div class="hero-blob hero-blob--a" aria-hidden="true"></div>
-    <div class="hero-blob hero-blob--b" aria-hidden="true"></div>
+    <span class="blob blob--sky" aria-hidden="true"></span>
+    <span class="blob blob--gold" aria-hidden="true"></span>
     <div class="container hero-inner">
       <div class="hero-copy">
-        <span class="pill"><Icon name="sun" /> Now enrolling · 2026–2027</span>
-        <h1>Where little ones grow in <span class="ink-gold">faith</span>, friendship &amp; <span class="ink-green">wonder</span>.</h1>
+        <span class="pill pill--gold">Now enrolling · Just 10 Pre-K spots</span>
+        <h1>
+          Where little ones grow in
+          <span class="ink-sky">faith</span>,
+          <span class="ink-coral">friendship</span> &amp;
+          <span class="ink-gold">wonder</span>.
+        </h1>
         <p class="lead">
-          Little Blessings is a warm, Christ-centered preschool in Madison, Minnesota,
-          where children ages 2–5 are loved by name, learn through play, and take their
-          first joyful steps toward kindergarten.
+          Little Blessings is a Christ-centered Pre-K in Madison, Minnesota. With just
+          10 spots, every child is loved by name and gets ready for kindergarten through play.
         </p>
         <div class="cluster mt-3">
           <a href="#visit" class="btn btn--primary">Schedule a Visit <Icon name="arrow" /></a>
           <a href={site.phoneHref} class="btn btn--ghost"><Icon name="phone" /> {site.phone}</a>
         </div>
         <p class="hero-trust">
-          <Icon name="heart" class="ic-gold" /> A ministry of {site.ministryOf} · Children of all faiths &amp; backgrounds welcome
+          A ministry of <strong>{site.ministryOf}</strong> · children of all faiths
+          &amp; backgrounds welcome
         </p>
       </div>
 
-      <div class="hero-art" aria-hidden="true">
-        <div class="scene">
-          <span class="scene-sun"><Icon name="sun" /></span>
-          <div class="scene-hill scene-hill--back"></div>
-          <div class="scene-hill scene-hill--front"></div>
-          <span class="float float--abc">ABC</span>
-          <span class="float float--123">123</span>
-          <span class="float float--heart"><Icon name="heart" /></span>
-          <span class="float float--star"><Icon name="star" /></span>
-          <span class="float float--cross"><Icon name="cross" /></span>
+      <div class="hero-media">
+        <div class="frame frame--hero">
+          <Image src={firstDay} alt="Little Blessings preschoolers lined up smiling on their first day of school outside the church entrance" widths={[480, 760, 1040]} sizes="(max-width: 960px) 92vw, 540px" loading="eager" />
         </div>
+        <span class="photo-tag">🎒 First day of school!</span>
       </div>
     </div>
-    <div class="wave wave--cream" aria-hidden="true">
+    <div class="wave" aria-hidden="true">
       <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C240,90 480,0 720,30 C960,60 1200,90 1440,40 L1440,80 L0,80 Z"/></svg>
-    </div>
-  </section>
-
-  <!-- Stat strip ------------------------------------------------------ -->
-  <section class="section--tight stat-strip">
-    <div class="container stat-row">
-      {stats.map((s) => (
-        <div class="stat">
-          <span class="stat-value">{s.value}</span>
-          <span class="stat-label">{s.label}</span>
-        </div>
-      ))}
     </div>
   </section>
 
   <!-- Welcome --------------------------------------------------------- -->
   <section class="section" id="welcome">
     <div class="container welcome-grid">
-      <div class="welcome-aside">
-        <span class="eyebrow"><Icon name="church" /> Welcome, families</span>
+      <div class="welcome-copy">
+        <span class="eyebrow eyebrow--green">Welcome, families</span>
         <h2>A gentle place to begin.</h2>
+        <p class="lead">
+          Every child is a gift. Our Pre-K is a safe, joyful place with Christ at the
+          center, where your child can play, make friends, and love learning.
+        </p>
+        <p>
+          Because we keep just 10 spots, our teacher knows each child by name. Days are
+          full of stories, songs, art, outdoor play, and prayer, building the curiosity
+          and confidence kids carry into kindergarten.
+        </p>
         <blockquote class="verse">
           {site.verse.text}
-          <cite>— {site.verse.ref}</cite>
+          <cite>{site.verse.ref}</cite>
+        </blockquote>
+        <a href="#day" class="btn btn--ghost">See a day with us <Icon name="arrow" /></a>
+      </div>
+
+      <div class="welcome-media">
+        <div class="frame frame--tall">
+          <Image src={teacher} alt="A teacher leads a hands-on glow-in-the-dark science activity with a circle of preschoolers" widths={[420, 680]} sizes="(max-width: 900px) 90vw, 440px" loading="lazy" />
+        </div>
+        <div class="frame frame--inset">
+          <Image src={readingNook} alt="A cozy classroom reading nook with beanbags, soft pillows, and a picture-book display" widths={[300, 460]} sizes="(max-width: 900px) 50vw, 240px" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Celebrating our Little Blessings -------------------------------- -->
+  <section class="section celebrate">
+    <span class="blob blob--coral" aria-hidden="true"></span>
+    <div class="container celebrate-grid">
+      <div class="celebrate-media">
+        <div class="frame frame--photo">
+          <Image src={ourBlessings} alt="The Little Blessings Preschool class smiling together on the playground in their bright green Little Blessings shirts" widths={[440, 720]} sizes="(max-width: 900px) 90vw, 460px" loading="lazy" />
+        </div>
+        <span class="photo-tag">💛 Our Little Blessings</span>
+      </div>
+
+      <div class="celebrate-copy">
+        <span class="eyebrow eyebrow--gold">Fearfully &amp; wonderfully made</span>
+        <h2>Celebrating our Little Blessings.</h2>
+        <p class="lead">
+          This week we're celebrating our Little Blessings and all of God's children.
+          Every one of them is a gift, made with purpose and loved beyond measure.
+        </p>
+        <blockquote class="verse verse--gold">
+          “For you created my inmost being; you knit me together in my mother's womb.
+          I praise you because I am fearfully and wonderfully made; your works are
+          wonderful, I know that full well.”
+          <cite>Psalm 139:13–14</cite>
         </blockquote>
       </div>
-      <div class="welcome-body">
-        <p class="lead">
-          At Little Blessings, every child is a treasured gift. Our mission is to provide a
-          safe, healthy, and creative environment — with a Christian focus — where your child
-          can play, make friends their own age, and discover the joy of learning.
-        </p>
-        <p>
-          In our small classrooms, teachers know each child by name and meet them right where
-          they are. Days are filled with stories and songs, art and outdoor play, prayer and
-          plenty of laughter — building the curiosity, kindness, and confidence that carry
-          children well beyond their preschool years.
-        </p>
-        <p>
-          We warmly welcome children of every faith and background. Come see why Madison
-          families have trusted us with their little ones for years.
-        </p>
-        <a href="#programs" class="btn btn--ghost mt-1">See Our Programs <Icon name="arrow" /></a>
-      </div>
     </div>
   </section>
 
-  <!-- Programs -------------------------------------------------------- -->
-  <section class="section section--alt" id="programs">
-    <div class="container">
-      <div class="section-head section-head--center">
-        <span class="eyebrow"><Icon name="star" /> For every age &amp; stage</span>
-        <h2>Programs that grow with your child.</h2>
-        <p class="lead" style="margin-inline:auto;">
-          From first steps away from home to getting ready for kindergarten — there’s a
-          loving place here for your little blessing.
-        </p>
-      </div>
-
-      <div class="program-list">
-        {programs.map((p) => (
-          <article class="program">
-            <div class="program-visual">
-              <span class="program-icon"><Icon name={p.icon} /></span>
-              <span class="program-age">{p.ages}</span>
-              {p.featured && <span class="pill program-pill">Most loved</span>}
-            </div>
-            <div class="program-content">
-              <p class="program-label">{p.label}</p>
-              <h3>{p.name}</h3>
-              <p>{p.summary}</p>
-              <ul class="checklist">
-                {p.highlights.map((h) => (
-                  <li><Icon name="check" /> {h}</li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- A day at Little Blessings --------------------------------------- -->
-  <section class="section" id="day">
+  <!-- A day with us --------------------------------------------------- -->
+  <section class="section section--alt" id="day">
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow"><Icon name="sun" /> A day with us</span>
+        <span class="eyebrow eyebrow--sky">A day with us</span>
         <h2>Joyful from hello to goodbye.</h2>
-        <p class="lead">Predictable, gentle rhythms help little ones feel safe — and free to explore.</p>
+        <p class="lead">Predictable, gentle rhythms help little ones feel safe and free to explore.</p>
       </div>
       <ol class="timeline">
         {day.map((d) => (
-          <li class="tl-item">
-            <span class="tl-icon"><Icon name={d.icon} /></span>
+          <li class="tl">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <span class="tl-time">{d.time}</span>
             <div class="tl-body">
-              <span class="tl-time">{d.time}</span>
               <h3>{d.title}</h3>
               <p>{d.text}</p>
             </div>
@@ -148,51 +149,71 @@ const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&
     </div>
   </section>
 
+  <!-- Faith band (full-bleed photo) ----------------------------------- -->
+  <section class="faith">
+    <Image class="faith-bg" src={singing} alt="Preschoolers singing together at the front of the church sanctuary beneath the stained-glass windows" widths={[760, 1200, 1800]} sizes="100vw" loading="lazy" />
+    <div class="faith-scrim" aria-hidden="true"></div>
+    <div class="container faith-inner">
+      <span class="faith-label">Christ at the center</span>
+      <blockquote>
+        “Train up a child in the way he should go; even when he is old he will not depart from it.”
+      </blockquote>
+      <cite>Proverbs 22:6</cite>
+      <p>
+        Faith isn't a single lesson on our calendar. It's the love, patience, and grace
+        woven through every part of our day, from morning prayer to the songs we sing.
+      </p>
+    </div>
+  </section>
+
   <!-- Why families choose us ------------------------------------------ -->
-  <section class="section section--cream" id="why">
+  <section class="section" id="why">
     <div class="container">
       <div class="section-head section-head--center">
-        <span class="eyebrow"><Icon name="heart" /> Why families choose us</span>
-        <h2>More than a preschool — a family.</h2>
+        <span class="eyebrow eyebrow--green">Why families choose us</span>
+        <h2>More than a preschool. A family.</h2>
       </div>
       <div class="reasons">
-        {reasons.map((r) => (
+        {reasons.map((r, i) => (
           <div class="reason">
-            <span class="reason-icon"><Icon name={r.icon} /></span>
-            <div>
-              <h3>{r.title}</h3>
-              <p>{r.text}</p>
-            </div>
+            <span class={`reason-rule rule--${['sky','gold','coral','green','sky','gold'][i % 6]}`} aria-hidden="true"></span>
+            <h3>{r.title}</h3>
+            <p>{r.text}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Faith band ------------------------------------------------------ -->
-  <section class="section section--green faith">
-    <div class="container faith-inner">
-      <span class="faith-mark"><Icon name="cross" /></span>
-      <blockquote>
-        “Train up a child in the way he should go; even when he is old he will not depart from it.”
-      </blockquote>
-      <cite>— Proverbs 22:6</cite>
-      <p class="lead" style="margin-inline:auto;">
-        Faith isn’t a single lesson on our calendar — it’s the love, patience, and grace woven
-        through every part of our day.
-      </p>
+  <!-- Peek inside our room -------------------------------------------- -->
+  <section class="section section--alt" id="peek">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow eyebrow--gold">Come on in</span>
+        <h2>A peek inside our room.</h2>
+        <p class="lead">Bright corners for reading, building, creating, and resting, all
+          made just their size.</p>
+      </div>
+      <div class="peek-grid">
+        {peek.map((item) => (
+          <figure class="peek-item">
+            <Image src={item.img} alt={item.caption} widths={[320, 520]} sizes="(max-width: 700px) 90vw, (max-width: 1000px) 45vw, 360px" loading="lazy" />
+            <figcaption>{item.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- Visit / Enroll -------------------------------------------------- -->
-  <section class="section" id="visit">
+  <section class="section section--soft" id="visit">
     <div class="container visit-grid">
       <div class="visit-info">
-        <span class="eyebrow"><Icon name="pin" /> Visit &amp; enroll</span>
-        <h2>We’d love to meet you.</h2>
+        <span class="eyebrow eyebrow--coral">Visit &amp; enroll</span>
+        <h2>We'd love to meet you.</h2>
         <p class="lead">
-          The best way to know if Little Blessings is right for your family is to come see us.
-          Enrolling is simple — here’s how to begin.
+          The best way to know if we're right for your family is to come see us. Enrolling
+          is simple, and with only 10 spots, it's worth reaching out early. Here's how to begin.
         </p>
 
         <ol class="steps">
@@ -243,7 +264,7 @@ const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&
               <li><span>{h.day}</span><span>{h.time}</span></li>
             ))}
           </ul>
-          <p class="hours-note">{site.license} · Times vary by program — call to confirm openings.</p>
+          <p class="hours-note">{site.license} · Call to check spot availability.</p>
         </div>
       </div>
     </div>
@@ -251,162 +272,170 @@ const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&
 </BaseLayout>
 
 <style>
-  /* ---- Hero ---- */
-  .hero { position: relative; overflow: hidden; padding-block: clamp(2.5rem, 6vw, 5rem) clamp(5rem, 9vw, 8rem); }
-  .hero-blob { position: absolute; border-radius: 50%; filter: blur(8px); z-index: 0; }
-  .hero-blob--a { width: 46vw; max-width: 560px; aspect-ratio: 1; top: -16%; right: -8%;
-    background: radial-gradient(circle, rgba(247, 201, 95, 0.4), transparent 65%); }
-  .hero-blob--b { width: 40vw; max-width: 480px; aspect-ratio: 1; bottom: -20%; left: -12%;
-    background: radial-gradient(circle, rgba(95, 160, 124, 0.28), transparent 65%); }
-  .hero-inner {
-    position: relative; z-index: 1;
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center;
-  }
+  /* ---- shared photo frames ---- */
+  .frame { border-radius: var(--radius-lg); overflow: hidden; background: var(--white); box-shadow: var(--shadow-md); }
+  .frame :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .ink-sky { color: var(--sky-600); }
+  .ink-coral { color: var(--coral-500); }
   .ink-gold { color: var(--gold-600); }
   .ink-green { color: var(--green-600); }
+
+  .pill--gold { background: var(--gold-100); color: var(--gold-600); }
+
+  /* ---- Hero ---- */
+  .hero { position: relative; overflow: hidden; padding-block: clamp(2rem, 5vw, 4rem) clamp(5rem, 9vw, 8rem); }
+  .blob { position: absolute; border-radius: 50%; filter: blur(10px); z-index: 0; opacity: 0.5; }
+  .blob--sky { width: 44vw; max-width: 540px; aspect-ratio: 1; top: -18%; right: -8%;
+    background: radial-gradient(circle, var(--sky-200), transparent 66%); }
+  .blob--gold { width: 38vw; max-width: 460px; aspect-ratio: 1; bottom: -22%; left: -12%;
+    background: radial-gradient(circle, rgba(246, 183, 60, 0.4), transparent 66%); }
+  .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 3.5rem; align-items: center; }
   .hero-copy h1 { margin-top: 1rem; }
-  .hero-trust {
-    display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
-    margin-top: 2rem; color: var(--muted); font-size: 0.95rem; font-weight: 600;
-  }
-  .hero-trust :global(svg) { width: 18px; height: 18px; }
+  .hero-trust { display: block; margin-top: 1.9rem; color: var(--muted); font-size: 0.96rem; font-weight: 600; }
+  .hero-trust strong { color: var(--green-700); }
 
-  /* Hero illustrated scene (no photos required) */
-  .hero-art { position: relative; min-height: 360px; }
-  .scene {
-    position: relative; height: 100%; min-height: 380px;
-    border-radius: var(--radius-lg);
-    background: linear-gradient(180deg, #eaf5fb 0%, #f3f9ef 55%, var(--sage-100) 100%);
-    box-shadow: var(--shadow-lg);
-    overflow: hidden;
+  .hero-media { position: relative; }
+  .frame--hero { aspect-ratio: 4 / 3; transform: rotate(1.4deg); border: 6px solid var(--white); }
+  .photo-tag {
+    position: absolute; left: -0.4rem; bottom: -1.1rem;
+    background: var(--white); color: var(--green-800);
+    font-family: var(--font-display); font-weight: 700; font-size: 1rem;
+    padding: 0.6rem 1.1rem; border-radius: 999px; box-shadow: var(--shadow-md);
+    transform: rotate(-2.5deg);
   }
-  .scene-sun {
-    position: absolute; top: 30px; left: 50%; transform: translateX(-50%);
-    width: 78px; height: 78px; display: grid; place-items: center;
-    color: var(--gold-500);
-  }
-  .scene-sun :global(svg) { width: 78px; height: 78px; stroke-width: 1.4; }
-  .scene-hill { position: absolute; left: -10%; right: -10%; border-radius: 50% 50% 0 0; }
-  .scene-hill--back { bottom: -38%; height: 70%; background: var(--green-500); opacity: 0.55; }
-  .scene-hill--front { bottom: -46%; height: 64%; background: var(--green-600); }
-  .float {
-    position: absolute; display: grid; place-items: center;
-    background: #fff; border-radius: 16px; box-shadow: var(--shadow-md);
-    font-family: var(--font-display); font-weight: 700; color: var(--green-700);
-    padding: 0.5rem 0.85rem;
-  }
-  .float :global(svg) { width: 24px; height: 24px; }
-  .float--abc { top: 22%; left: 8%; color: var(--coral); transform: rotate(-8deg); }
-  .float--123 { top: 16%; right: 10%; color: var(--sky); transform: rotate(7deg); }
-  .float--heart { bottom: 30%; left: 6%; color: var(--coral); padding: 0.55rem; }
-  .float--star { bottom: 16%; right: 9%; color: var(--gold-500); padding: 0.55rem; }
-  .float--cross { top: 48%; right: 4%; color: var(--green-600); padding: 0.55rem; }
 
-  /* Wave divider */
   .wave { position: absolute; bottom: -1px; left: 0; right: 0; line-height: 0; z-index: 1; }
-  .wave svg { width: 100%; height: 60px; display: block; }
-  .wave--cream svg path { fill: var(--cream); }
-
-  /* ---- Stats ---- */
-  .stat-strip { border-bottom: 1px solid var(--line); }
-  .stat-row {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 1rem; text-align: center;
-  }
-  .stat { padding: 0.5rem; }
-  .stat-value {
-    display: block; font-family: var(--font-display); font-weight: 700;
-    font-size: clamp(1.8rem, 3.4vw, 2.6rem); color: var(--green-600); line-height: 1.1;
-  }
-  .stat-label { color: var(--muted); font-size: 0.9rem; font-weight: 600; }
+  .wave svg { width: 100%; height: 58px; display: block; }
+  .wave svg path { fill: var(--cream); }
 
   /* ---- Welcome ---- */
-  .welcome-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3rem; align-items: start; }
+  .welcome-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; }
   .verse {
-    margin: 1.5rem 0 0; padding: 1.4rem 1.6rem;
-    background: var(--sage-50); border-left: 5px solid var(--green-500);
+    margin: 1.75rem 0; padding: 1.3rem 1.5rem;
+    background: var(--sky-100); border-left: 5px solid var(--sky-500);
     border-radius: 0 var(--radius) var(--radius) 0;
-    font-family: var(--font-display); font-weight: 600; font-size: 1.18rem;
-    color: var(--green-800); line-height: 1.5;
+    font-family: var(--font-display); font-weight: 600; font-size: 1.15rem;
+    color: var(--sky-700); line-height: 1.5;
   }
-  .verse cite { display: block; margin-top: 0.6rem; font-style: normal; font-size: 0.95rem; color: var(--green-600); }
+  .verse cite { display: block; margin-top: 0.55rem; font-style: normal; font-size: 0.92rem; color: var(--sky-600); }
 
-  /* ---- Programs ---- */
-  .program-list { display: grid; gap: 1.5rem; }
-  .program {
-    display: grid; grid-template-columns: 280px 1fr; gap: 2rem; align-items: center;
-    background: var(--white); border-radius: var(--radius-lg);
-    padding: 2rem; box-shadow: var(--shadow-sm);
+  .welcome-media { position: relative; padding-bottom: 2.5rem; padding-left: 2.5rem; }
+  .frame--tall { aspect-ratio: 4 / 5; }
+  .frame--inset {
+    position: absolute; left: 0; bottom: 0; width: 47%; aspect-ratio: 1 / 1;
+    border: 5px solid var(--white);
   }
-  .program:nth-child(even) { direction: rtl; }
-  .program:nth-child(even) > * { direction: ltr; }
-  .program-visual {
-    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 0.8rem; padding: 2.2rem 1.5rem; border-radius: var(--radius);
-    background: linear-gradient(160deg, var(--sage-100), var(--sky-100));
-    text-align: center; min-height: 200px;
+
+  /* ---- Programs (editorial list, no cards) ---- */
+  .programs { display: grid; gap: 0; }
+  .prog {
+    display: grid; grid-template-columns: 210px 1fr; gap: 2.5rem; align-items: center;
+    padding: 2.1rem 0; border-top: 1px solid var(--line);
   }
-  .program:nth-child(2) .program-visual { background: linear-gradient(160deg, var(--gold-100), var(--sage-100)); }
-  .program:nth-child(3) .program-visual { background: linear-gradient(160deg, var(--coral-100), var(--sage-100)); }
-  .program-icon {
-    width: 84px; height: 84px; display: grid; place-items: center;
-    background: #fff; border-radius: 24px; color: var(--green-600); box-shadow: var(--shadow-sm);
+  .prog:last-child { border-bottom: 1px solid var(--line); }
+  .prog-age {
+    position: relative; border-radius: var(--radius); padding: 1.5rem 1.25rem;
+    text-align: center; display: flex; flex-direction: column; gap: 0.15rem;
   }
-  .program-icon :global(svg) { width: 42px; height: 42px; }
-  .program-age { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: var(--green-800); }
-  .program-pill { position: absolute; top: 0.9rem; right: 0.9rem; }
-  .program-label {
+  .prog--sky .prog-age { background: var(--sky-100); }
+  .prog--gold .prog-age { background: var(--gold-100); }
+  .prog--coral .prog-age { background: var(--coral-100); }
+  .prog-ages { font-family: var(--font-display); font-weight: 700; font-size: 2.1rem; line-height: 1; color: var(--heading); }
+  .prog--sky .prog-ages { color: var(--sky-700); }
+  .prog--gold .prog-ages { color: var(--gold-600); }
+  .prog--coral .prog-ages { color: var(--coral-600); }
+  .prog-label {
     font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
-    letter-spacing: 0.08em; font-size: 0.82rem; color: var(--green-600); margin: 0 0 0.2rem;
+    letter-spacing: 0.08em; font-size: 0.78rem; color: var(--ink-soft);
   }
-  .program-content h3 { font-size: clamp(1.5rem, 2.6vw, 1.9rem); margin-bottom: 0.5rem; }
-  .program-content > p { color: var(--text-soft); }
-  .checklist { list-style: none; margin: 1rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.4rem; }
-  .checklist li { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; color: var(--green-800); font-size: 0.96rem; }
-  .checklist :global(svg) { width: 18px; height: 18px; color: var(--green-500); flex: none; }
+  .prog-flag {
+    margin-top: 0.6rem; align-self: center; font-family: var(--font-display); font-weight: 700;
+    font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+    background: var(--coral-500); color: #fff; padding: 0.22rem 0.7rem; border-radius: 999px;
+  }
+  .prog-body h3 { font-size: clamp(1.45rem, 2.6vw, 1.85rem); margin-bottom: 0.4rem; }
+  .prog-body > p { color: var(--text-soft); margin-bottom: 0.7rem; }
+  .prog-tags { display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem; margin: 0;
+    font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; color: var(--green-700); }
+  .prog-tags .tag-item { display: inline-flex; align-items: center; gap: 0.55rem; }
+  .prog-tags .dot { color: var(--muted); }
 
-  /* ---- Timeline ---- */
-  .timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 0.4rem; }
-  .timeline::before { content: ''; position: absolute; left: 27px; top: 12px; bottom: 12px; width: 3px; background: var(--sage-200); border-radius: 3px; }
-  .tl-item { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 1.2rem; align-items: start; padding: 0.7rem 0; }
-  .tl-icon {
-    position: relative; z-index: 1; width: 56px; height: 56px; display: grid; place-items: center;
-    background: #fff; border: 3px solid var(--sage-200); border-radius: 50%; color: var(--green-600);
+  /* ---- Celebrating our Little Blessings ---- */
+  .celebrate { position: relative; overflow: hidden; background: var(--gold-100); }
+  .blob--coral { width: 40vw; max-width: 480px; aspect-ratio: 1; top: -24%; right: -10%;
+    background: radial-gradient(circle, var(--coral-100), transparent 66%); }
+  .celebrate-grid {
+    position: relative; z-index: 1; display: grid; grid-template-columns: 0.9fr 1.1fr;
+    gap: 3.5rem; align-items: center;
   }
-  .tl-icon :global(svg) { width: 26px; height: 26px; }
+  .celebrate-media { position: relative; }
+  .frame--photo { aspect-ratio: 4 / 5; transform: rotate(-1.4deg); border: 6px solid var(--white); }
+  .verse--gold {
+    background: var(--white); border-left-color: var(--gold-500); color: var(--green-800);
+  }
+  .verse--gold cite { color: var(--gold-600); }
+
+  /* ---- Timeline (de-iconed) ---- */
+  .timeline { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 0.2rem; max-width: 760px; }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 14px; bottom: 14px; width: 2px; background: var(--line); }
+  .tl { position: relative; display: grid; grid-template-columns: 130px 1fr; gap: 1.5rem; align-items: baseline; padding: 0.85rem 0 0.85rem 2rem; }
+  .tl-dot {
+    position: absolute; left: 0; top: 1.45rem; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--white); border: 3px solid var(--sky-500);
+  }
+  .tl:nth-child(3n+2) .tl-dot { border-color: var(--gold-500); }
+  .tl:nth-child(3n+3) .tl-dot { border-color: var(--coral-500); }
   .tl-time {
-    display: inline-block; font-family: var(--font-display); font-weight: 600;
-    font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold-600);
+    font-family: var(--font-display); font-weight: 700; font-size: 0.82rem;
+    letter-spacing: 0.06em; text-transform: uppercase; color: var(--sky-700);
   }
-  .tl-body h3 { margin: 0.15rem 0 0.25rem; }
+  .tl-body h3 { margin: 0 0 0.2rem; font-size: 1.2rem; }
   .tl-body p { margin: 0; color: var(--text-soft); }
 
-  /* ---- Reasons (feature list, no cards) ---- */
-  .reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem 2.5rem; }
-  .reason { display: flex; gap: 1rem; align-items: flex-start; }
-  .reason-icon {
-    flex: none; width: 56px; height: 56px; display: grid; place-items: center;
-    border-radius: 18px; background: var(--sage-100); color: var(--green-600);
+  /* ---- Faith band (full-bleed) ---- */
+  .faith { position: relative; overflow: hidden; padding-block: clamp(4.5rem, 10vw, 8rem); color: #fff; }
+  .faith-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+  .faith-scrim { position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(20, 52, 40, 0.78), rgba(20, 52, 40, 0.62)); }
+  .faith-inner { position: relative; z-index: 2; max-width: 820px; margin-inline: auto; text-align: center; }
+  .faith-label {
+    display: inline-block; font-family: var(--font-display); font-weight: 700;
+    font-size: 0.9rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold-400); margin-bottom: 1rem;
   }
-  .reason-icon :global(svg) { width: 28px; height: 28px; }
-  .reason h3 { font-size: 1.22rem; margin-bottom: 0.3rem; }
-  .reason p { margin: 0; color: var(--text-soft); font-size: 0.98rem; }
-
-  /* ---- Faith band ---- */
-  .faith-inner { max-width: 800px; margin-inline: auto; text-align: center; }
-  .faith-mark {
-    width: 64px; height: 64px; margin: 0 auto 1.2rem; display: grid; place-items: center;
-    border-radius: 20px; background: rgba(255, 255, 255, 0.14); color: #fff;
-  }
-  .faith-mark :global(svg) { width: 34px; height: 34px; }
   .faith blockquote {
-    font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3.4vw, 2.2rem);
-    line-height: 1.35; color: #fff; margin: 0 0 0.8rem;
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+    line-height: 1.32; color: #fff; margin: 0 0 0.7rem;
   }
   .faith cite { display: block; font-style: normal; font-weight: 600; color: var(--gold-400); margin-bottom: 1.4rem; }
+  .faith-inner > p { color: rgba(255,255,255,0.9); font-size: 1.1rem; max-width: 60ch; margin-inline: auto; }
+
+  /* ---- Why (feature list, no icons/cards) ---- */
+  .reasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem 3rem; }
+  .reason-rule { display: block; width: 38px; height: 4px; border-radius: 4px; margin-bottom: 1rem; }
+  .rule--sky { background: var(--sky-500); }
+  .rule--gold { background: var(--gold-500); }
+  .rule--coral { background: var(--coral-500); }
+  .rule--green { background: var(--green-500); }
+  .reason h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+  .reason p { margin: 0; color: var(--text-soft); font-size: 0.99rem; }
+
+  /* ---- Peek inside (authentic gallery) ---- */
+  .peek-grid { columns: 3; column-gap: 1.25rem; }
+  .peek-item { margin: 0 0 1.25rem; break-inside: avoid; }
+  .peek-item :global(img) {
+    width: 100%; height: auto; display: block; border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  .peek-item figcaption {
+    margin-top: 0.55rem; font-family: var(--font-display); font-weight: 600;
+    font-size: 0.88rem; color: var(--ink-soft);
+  }
 
   /* ---- Visit / Enroll ---- */
-  .visit-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3rem; align-items: start; }
+  .section--soft { background: var(--sky-100); }
+  .visit-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: start; }
   .steps { list-style: none; margin: 1.75rem 0; padding: 0; display: grid; gap: 1.2rem; }
   .step { display: grid; grid-template-columns: 48px 1fr; gap: 1rem; align-items: start; }
   .step-n {
@@ -414,19 +443,22 @@ const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&
     border-radius: 50%; background: var(--green-600); color: #fff;
     font-family: var(--font-display); font-weight: 700; font-size: 1.25rem;
   }
+  .step:nth-child(2) .step-n { background: var(--sky-600); }
+  .step:nth-child(3) .step-n { background: var(--gold-500); color: var(--green-900); }
+  .step:nth-child(4) .step-n { background: var(--coral-500); }
   .step h3 { margin: 0.1rem 0 0.2rem; font-size: 1.2rem; }
   .step p { margin: 0; color: var(--text-soft); font-size: 0.98rem; }
 
   .contact-box {
     display: grid; gap: 0.25rem; margin-top: 2rem; padding: 1rem 1.25rem;
-    background: var(--sage-50); border-radius: var(--radius);
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm);
   }
   .contact-row { display: flex; align-items: center; gap: 0.9rem; padding: 0.7rem 0.25rem; color: var(--ink); }
   .contact-row + .contact-row { border-top: 1px solid var(--line); }
   a.contact-row:hover { color: var(--green-700); }
   .contact-ic {
     flex: none; width: 44px; height: 44px; display: grid; place-items: center;
-    border-radius: 14px; background: #fff; color: var(--green-600); box-shadow: var(--shadow-sm);
+    border-radius: 14px; background: var(--sky-100); color: var(--sky-700);
   }
   .contact-ic :global(svg) { width: 22px; height: 22px; }
   .contact-row span strong { font-family: var(--font-display); }
@@ -434,7 +466,7 @@ const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&
   .visit-map { position: sticky; top: 96px; display: grid; gap: 1.25rem; }
   .visit-map iframe {
     width: 100%; height: 300px; border: 0; border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md); filter: saturate(1.05);
+    box-shadow: var(--shadow-md);
   }
   .hours-panel { background: var(--white); border-radius: var(--radius); padding: 1.5rem 1.6rem; box-shadow: var(--shadow-sm); }
   .hours-panel h3 { display: flex; align-items: center; gap: 0.5rem; font-size: 1.2rem; margin-bottom: 0.9rem; }
@@ -447,19 +479,24 @@ const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&
 
   /* ---- Responsive ---- */
   @media (max-width: 960px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hero-art { order: -1; min-height: 300px; }
-    .welcome-grid,
-    .visit-grid { grid-template-columns: 1fr; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-media { order: -1; max-width: 520px; }
+    .welcome-grid, .visit-grid { grid-template-columns: 1fr; }
+    .celebrate-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .celebrate-media { max-width: 460px; margin-inline: auto; }
+    .welcome-media { max-width: 480px; margin-inline: auto; }
     .reasons { grid-template-columns: repeat(2, 1fr); }
+    .peek-grid { columns: 2; }
     .visit-map { position: static; }
   }
-  @media (max-width: 760px) {
-    .program { grid-template-columns: 1fr; gap: 1.5rem; text-align: left; }
-    .program:nth-child(even) { direction: ltr; }
+  @media (max-width: 700px) {
+    .prog { grid-template-columns: 1fr; gap: 1.25rem; }
+    .prog-age { flex-direction: row; align-items: baseline; justify-content: flex-start; gap: 0.6rem; padding: 0.8rem 1.1rem; }
+    .prog-flag { margin-top: 0; margin-left: auto; }
+    .tl { grid-template-columns: 1fr; gap: 0.2rem; }
   }
-  @media (max-width: 620px) {
-    .stat-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+  @media (max-width: 560px) {
     .reasons { grid-template-columns: 1fr; }
+    .peek-grid { columns: 1; }
   }
 </style>

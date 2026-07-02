@@ -14,7 +14,6 @@ import writingDesk from '../assets/photos/writing-desk.jpg';
 import beanbag from '../assets/photos/beanbag-corner.jpg';
 import ourBlessings from '../assets/photos/our-little-blessings.jpg';
 import blanketBlessing from '../assets/photos/blanket-blessing.jpg';
-import soilDiscovery from '../assets/photos/soil-discovery.jpg';
 
 const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
@@ -91,10 +90,7 @@ const peek = [
 
       <div class="welcome-media">
         <div class="frame frame--tall">
-          <Image src={blanketBlessing} alt="Little Blessings preschoolers wrapped in handmade fleece blankets alongside the church volunteers who made them" widths={[440, 720]} sizes="(max-width: 900px) 90vw, 440px" loading="lazy" />
-        </div>
-        <div class="frame frame--inset">
-          <Image src={soilDiscovery} alt="Preschoolers gathered on the classroom alphabet rug, exploring a bin of soil together" widths={[300, 460]} sizes="(max-width: 900px) 50vw, 240px" loading="lazy" />
+          <Image src={blanketBlessing} alt="Little Blessings preschoolers wrapped in handmade fleece blankets alongside the church volunteers who made them" widths={[520, 840]} sizes="(max-width: 900px) 92vw, 520px" loading="lazy" />
         </div>
       </div>
     </div>
@@ -312,7 +308,7 @@ const peek = [
   .wave svg path { fill: var(--cream); }
 
   /* ---- Welcome ---- */
-  .welcome-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; }
+  .welcome-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 3.5rem; align-items: center; }
   .verse {
     margin: 1.75rem 0; padding: 1.3rem 1.5rem;
     background: var(--sky-100); border-left: 5px solid var(--sky-500);
@@ -322,12 +318,8 @@ const peek = [
   }
   .verse cite { display: block; margin-top: 0.55rem; font-style: normal; font-size: 0.92rem; color: var(--sky-600); }
 
-  .welcome-media { position: relative; padding-bottom: 2.5rem; padding-left: 2.5rem; }
+  .welcome-media { position: relative; }
   .frame--tall { aspect-ratio: 4 / 3; }
-  .frame--inset {
-    position: absolute; left: 0; bottom: 0; width: 47%; aspect-ratio: 1 / 1;
-    border: 5px solid var(--white);
-  }
 
   /* ---- Programs (editorial list, no cards) ---- */
   .programs { display: grid; gap: 0; }

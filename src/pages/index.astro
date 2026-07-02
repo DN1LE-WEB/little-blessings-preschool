@@ -13,6 +13,8 @@ import lightTable from '../assets/photos/light-table.jpg';
 import writingDesk from '../assets/photos/writing-desk.jpg';
 import beanbag from '../assets/photos/beanbag-corner.jpg';
 import ourBlessings from '../assets/photos/our-little-blessings.jpg';
+import blanketBlessing from '../assets/photos/blanket-blessing.jpg';
+import soilDiscovery from '../assets/photos/soil-discovery.jpg';
 
 const mapSrc = `https://maps.google.com/maps?q=${site.mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
 
@@ -89,10 +91,10 @@ const peek = [
 
       <div class="welcome-media">
         <div class="frame frame--tall">
-          <Image src={teacher} alt="A teacher leads a hands-on glow-in-the-dark science activity with a circle of preschoolers" widths={[420, 680]} sizes="(max-width: 900px) 90vw, 440px" loading="lazy" />
+          <Image src={blanketBlessing} alt="Little Blessings preschoolers wrapped in handmade fleece blankets alongside the church volunteers who made them" widths={[440, 720]} sizes="(max-width: 900px) 90vw, 440px" loading="lazy" />
         </div>
         <div class="frame frame--inset">
-          <Image src={readingNook} alt="A cozy classroom reading nook with beanbags, soft pillows, and a picture-book display" widths={[300, 460]} sizes="(max-width: 900px) 50vw, 240px" loading="lazy" />
+          <Image src={soilDiscovery} alt="Preschoolers gathered on the classroom alphabet rug, exploring a bin of soil together" widths={[300, 460]} sizes="(max-width: 900px) 50vw, 240px" loading="lazy" />
         </div>
       </div>
     </div>
@@ -321,7 +323,7 @@ const peek = [
   .verse cite { display: block; margin-top: 0.55rem; font-style: normal; font-size: 0.92rem; color: var(--sky-600); }
 
   .welcome-media { position: relative; padding-bottom: 2.5rem; padding-left: 2.5rem; }
-  .frame--tall { aspect-ratio: 4 / 5; }
+  .frame--tall { aspect-ratio: 4 / 3; }
   .frame--inset {
     position: absolute; left: 0; bottom: 0; width: 47%; aspect-ratio: 1 / 1;
     border: 5px solid var(--white);
